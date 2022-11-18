@@ -1,5 +1,7 @@
 import Image from 'next/image'
+import { Suspense } from 'react'
 import styles from './page.module.css'
+import Test from './Test'
 
 export default function Home() {
   return (
@@ -10,9 +12,15 @@ export default function Home() {
         </h1>
 
         <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>app/page.tsx</code>
+          Run <code className={styles.code}>npm run dev</code>.<br />
+          Wait 10 secoonds for the Test component to load and then edit this text.<br />
+          "Fast Refresh" will update the page after another 10 seconds, because of the `Suspense` below.<br />
+          Instead of doing it immediately.
         </p>
+
+        <Suspense fallback={<div>Waiting...</div>}>
+          <Test />
+        </Suspense>
 
         <div className={styles.grid}>
           <a href="https://beta.nextjs.org/docs" className={styles.card}>
